@@ -1,17 +1,19 @@
 export class Slide {
-  _innerHTML;
-  get innerHTML() {
-    return this._innerHTML;
+  _HTML;
+  get HTML() {
+    return this._HTML;
   }
   
   constructor() {
-    this._innerHTML = document.createElement("div");
-    this._innerHTML.classList.add("slide");
+    this._HTML = document.createElement("div");
+    this._HTML.classList.add("slide");
   }
 
-  addClasses(...classesNames) {
-    classesNames.forEach((className) =>
-      this._innerHTML.classList.add(className)
-    );
+  addClasses(classesNames) {
+    if (Array.isArray(classesNames)) {
+      this._HTML.classList.add(...classesNames);
+    } else {
+      this._HTML.classList.add(classesNames);
+    }
   }
 }
